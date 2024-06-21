@@ -1,0 +1,36 @@
+﻿@model ContactManagementSystem.Models.Contact
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+
+<div>
+    <div>
+        <label>Name</label>
+        <div>@Model.Name</div>
+    </div>
+    <div>
+        <label>Phone Number</label>
+        <div>@Model.PhoneNumber</div>
+    </div>
+    <div>
+        <label>Email</label>
+        <div>@Model.Email</div>
+    </div>
+    <div>
+        <label>Address</label>
+        <div>@Model.Address</div>
+    </div>
+</div>
+
+<form method="POST" action="/Contact/Delete/@Model.ContactId">
+    <input type="hidden" name="ContactId" value="@Model.ContactId" />
+    <input type="submit" value="Delete" class="btn btn-danger" /> |
+    <a href="/Contact/Index">Back to List</a>
+</form>
+
+

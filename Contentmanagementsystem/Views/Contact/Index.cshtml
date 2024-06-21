@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@model IEnumerable<ContactManagementSystem.Models.Contact>
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+<h2>Contacts</h2>
+
+<p>
+    <a href="/Contact/Create">Create New</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Categories</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contact in Model)
+        {
+            <tr>
+                <td>@contact.Name</td>
+                <td>@contact.PhoneNumber</td>
+                <td>@contact.Email</td>
+                <td>@contact.Address</td>
+                <td>
+                    @foreach (var category in contact.ContactCategoryMaps.Select(cc => cc.Category))
+                    {
+                        <span class="badge badge-primary">@category.CategoryName</span>
+                    }
+                </td>
+                <td>
+                    <a href="/Contact/Edit/@contact.ContactId">Edit</a> |
+                    <a href="/Contact/Details/@contact.ContactId">Details</a> |
+                    <a href="/Contact/Delete/@contact.ContactId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

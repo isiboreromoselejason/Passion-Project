@@ -1,0 +1,44 @@
+﻿
+@model ContactManagementSystem.Models.Contact
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Contact</h4>
+    <hr />
+    <div>
+        <label>Name</label>
+        <div>@Model.Name</div>
+    </div>
+    <div>
+        <label>Phone Number</label>
+        <div>@Model.PhoneNumber</div>
+    </div>
+    <div>
+        <label>Email</label>
+        <div>@Model.Email</div>
+    </div>
+    <div>
+        <label>Address</label>
+        <div>@Model.Address</div>
+    </div>
+    <div>
+        <label>Categories</label>
+        <div>
+            @foreach (var category in Model.ContactCategoryMaps.Select(cc => cc.Category))
+            {
+                <span class="badge badge-primary">@category.CategoryName</span>
+            }
+        </div>
+    </div>
+</div>
+<div>
+    <a href="/Contact/Edit/@Model.ContactId">Edit</a> |
+    <a href="/Contact/Index">Back to List</a>
+</div>
+
+
